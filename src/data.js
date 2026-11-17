@@ -3,15 +3,50 @@
 // ─────────────────────────────────────────────────────────────
 
 export const profile = {
+  name: 'Tom Cunningham',
   handle: 'nivokai',
+  status: 'Tom Cunningham · Apprenti informaticien à Genève',
   github: 'https://github.com/nivokai',
   tagline: 'Je construis des',
   roles: ['sites FiveM', 'applications PHP', 'bots Discord', 'outils sur mesure', 'cartes interactives'],
   intro:
-    "Développeur web. Je conçois des sites, des applications de gestion et des bots pour des communautés de jeu : du site vitrine au panel d'administration, avec connexion Discord et base de données.",
+    "Apprenti informaticien (CFC + maturité, 2024 – 2028). Je conçois des sites, des applications de gestion et des bots pour des communautés de jeu : du site vitrine au panel d'administration, avec connexion Discord et base de données.",
   about:
     "Je pars d'un besoin concret, souvent celui d'un serveur roleplay, et j'en fais un outil qui tourne sans qu'on y pense : un catalogue, un panel de tickets, une comptabilité d'entreprise, un dossier médical. Du front soigné, un back sécurisé, une installation documentée."
 };
+
+export const qualities = ['Analytique', 'Curieux', 'Rigoureux', "Esprit d'équipe"];
+
+// Parcours : formation et expérience. `current: true` marque ce qui est en cours.
+export const education = [
+  {
+    period: '2024 – 2028',
+    title: 'CFC Informatique + Maturité',
+    place: 'Formation en cours',
+    current: true
+  },
+  {
+    period: '2023 – 2024',
+    title: 'Collège Sismondi',
+    place: 'Genève',
+    text: "L'année où j'ai choisi de me lancer dans l'informatique."
+  }
+];
+
+export const experience = [
+  {
+    period: '2025',
+    title: 'Commune de Lancy',
+    place: 'Logistique et technique',
+    text: "Mise en place des structures pour les fêtes des écoles, installation des réseaux électriques, vérification et contrôle approfondi du matériel."
+  },
+  {
+    period: '2021 – 2022',
+    title: 'Entreprise familiale de paysagisme',
+    place: 'Espaces verts',
+    text: 'Contact avec la clientèle, travaux variés en extérieur : autonomie et débrouillardise.'
+  }
+];
 
 export const marquee = ['PHP', 'JavaScript', 'MySQL', 'Discord', 'FiveM', 'Leaflet', 'Node.js', 'React'];
 

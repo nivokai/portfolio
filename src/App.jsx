@@ -18,7 +18,7 @@ import ScrollVelocity from './components/reactbits/ScrollVelocity/ScrollVelocity
 import ScrollReveal from './components/reactbits/ScrollReveal/ScrollReveal';
 import Dock from './components/reactbits/Dock/Dock';
 
-import { profile, marquee, categories, projects, stack, stats } from './data';
+import { profile, qualities, education, experience, marquee, categories, projects, stack, stats } from './data';
 
 const ACCENT = '#8dffb5';
 const VIOLET = '#7b6cff';
@@ -71,6 +71,29 @@ const SectionHead = ({ index, label, title }) => (
     <BlurText text={title} className="section-title" animateBy="words" delay={90} />
   </header>
 );
+
+function Timeline({ label, items }) {
+  return (
+    <div className="timeline-col">
+      <h3 className="timeline-label">{label}</h3>
+      <ol className="timeline">
+        {items.map((item, i) => (
+          <li key={item.title} className={item.current ? 'tl-item current' : 'tl-item'}>
+            <AnimatedContent distance={36} delay={i * 0.1} className="tl-body">
+            <span className="tl-period">
+              {item.period}
+              {item.current && <em>En cours</em>}
+            </span>
+            <span className="tl-title">{item.title}</span>
+            {item.place && <span className="tl-place">{item.place}</span>}
+            {item.text && <p className="tl-text">{item.text}</p>}
+            </AnimatedContent>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
 
 function ProjectCard({ project, index, repos }) {
   const url = project.repo ? repos[project.repo] || (project.code ? `${profile.github}/${project.repo}` : null) : null;
@@ -134,6 +157,7 @@ export default function App() {
     { icon: <Icon d="M3 11.5 12 4l9 7.5M5.5 10v9.5h13V10" />, label: 'Accueil', onClick: go('accueil') },
     { icon: <Icon d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.5 20a7.5 7.5 0 0 1 15 0" />, label: 'À propos', onClick: go('a-propos') },
     { icon: <Icon d="M4 6.5h6l2 2h8v9.5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Z" />, label: 'Projets', onClick: go('projets') },
+    { icon: <Icon d="M2.5 9 12 4.5 21.5 9 12 13.5ZM6.5 11v4.5c0 1.4 2.5 3 5.5 3s5.5-1.6 5.5-3V11M21.5 9v5" />, label: 'Parcours', onClick: go('parcours') },
     { icon: <Icon d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14" />, label: 'Stack', onClick: go('stack') },
     { icon: <Icon d="M4 6h16v12H4zM4 7l8 6 8-6" />, label: 'Contact', onClick: go('contact') },
     { icon: <GithubIcon />, label: 'GitHub', onClick: () => window.open(profile.github, '_blank', 'noopener') }
@@ -151,7 +175,7 @@ export default function App() {
           <div className="hero-inner">
             <span className="status">
               <i />
-              <ShinyText text="Disponible pour de nouveaux projets" color="#9aa3ad" shineColor="#ffffff" speed={3} />
+              <ShinyText text={profile.status} color="#9aa3ad" shineColor="#ffffff" speed={3} />
             </span>
 
             <SplitText
@@ -214,9 +238,19 @@ export default function App() {
         <section id="a-propos" className="section">
           <SectionHead index="01" label="À PROPOS" title="Des outils qui tournent tout seuls." />
           <div className="about">
-            <ScrollReveal baseOpacity={0.12} blurStrength={5} baseRotation={2} containerClassName="about-reveal" textClassName="about-text">
-              {profile.about}
-            </ScrollReveal>
+            <div>
+              <ScrollReveal baseOpacity={0.12} blurStrength={5} baseRotation={2} containerClassName="about-reveal" textClassName="about-text">
+                {profile.about}
+              </ScrollReveal>
+              <AnimatedContent distance={24} className="qualities">
+                <span className="qualities-label">Qualités</span>
+                <ul>
+                  {qualities.map(q => (
+                    <li key={q}>{q}</li>
+                  ))}
+                </ul>
+              </AnimatedContent>
+            </div>
 
             <div className="stats">
               {stats.map((s, i) => (
@@ -250,10 +284,19 @@ export default function App() {
           </div>
         </section>
 
+        {/* ───────── Parcours ───────── */}
+        <section id="parcours" className="section">
+          <SectionHead index="03" label="PARCOURS" title="Formation et expérience." />
+          <div className="parcours">
+            <Timeline label="Formation" items={education} />
+            <Timeline label="Expérience" items={experience} />
+          </div>
+        </section>
+
         {/* ───────── Stack ───────── */}
         <section id="stack" className="section section-wide">
           <div className="section-pad">
-            <SectionHead index="03" label="STACK" title="Mes outils du quotidien." />
+            <SectionHead index="04" label="STACK" title="Mes outils du quotidien." />
           </div>
           <LogoLoop
             logos={stack.map(name => ({ node: <span className="stack-chip">{name}</span>, title: name }))}
@@ -281,7 +324,7 @@ export default function App() {
         {/* ───────── Contact ───────── */}
         <section id="contact" className="section contact">
           <span className="eyebrow">
-            <span className="eyebrow-index">04</span>
+            <span className="eyebrow-index">05</span>
             <DecryptedText text="CONTACT" animateOn="view" sequential speed={40} />
           </span>
           <h2 className="contact-title">
@@ -299,7 +342,9 @@ export default function App() {
         </section>
 
         <footer className="footer">
-          <span>© {new Date().getFullYear()} {profile.handle}</span>
+          <span>
+            © {new Date().getFullYear()} {profile.name} · {profile.handle}
+          </span>
           <span>
             Animations par{' '}
             <a href="https://reactbits.dev" target="_blank" rel="noreferrer">
