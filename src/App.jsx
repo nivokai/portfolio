@@ -115,6 +115,19 @@ function ProjectCard({ project, index, repos }) {
             {project.imageNote && <figcaption>{project.imageNote}</figcaption>}
           </figure>
         )}
+        {!project.image && project.modules && (
+          <figure className="project-modules" aria-label={`Modules de ${project.title}`}>
+            <figcaption>resources/[core] · {project.modules.length} ressources</figcaption>
+            <ul>
+              {project.modules.map(m => (
+                <li key={m}>
+                  <span>nv_</span>
+                  {m}
+                </li>
+              ))}
+            </ul>
+          </figure>
+        )}
         <div className="project-body">
           <div className="project-top">
             <span>{project.kind}</span>

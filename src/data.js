@@ -8,9 +8,9 @@ export const profile = {
   status: 'Tom Cunningham · Apprenti informaticien à Genève',
   github: 'https://github.com/nivokai',
   tagline: 'Je construis des',
-  roles: ['sites FiveM', 'applications PHP', 'bots Discord', 'outils sur mesure', 'cartes interactives'],
+  roles: ['serveurs FiveM', 'sites FiveM','applications PHP', 'bots Discord', 'outils sur mesure', 'cartes interactives'],
   intro:
-    "Apprenti informaticien (CFC + maturité, 2024 – 2028). Je conçois des sites, des applications de gestion et des bots pour des communautés de jeu : du site vitrine au panel d'administration, avec connexion Discord et base de données.",
+    "Apprenti informaticien (CFC + maturité, 2024 – 2028). Je conçois des serveurs, des sites, des applications de gestion et des bots pour des communautés de jeu : de la base FiveM écrite à la main au panel d'administration, avec connexion Discord et base de données.",
   about:
     "Je pars d'un besoin concret, souvent celui d'un serveur roleplay, et j'en fais un outil qui tourne sans qu'on y pense : un catalogue, un panel de tickets, une comptabilité d'entreprise, un dossier médical. Du front soigné, un back sécurisé, une installation documentée."
 };
@@ -48,10 +48,11 @@ export const experience = [
   }
 ];
 
-export const marquee = ['PHP', 'JavaScript', 'MySQL', 'Discord', 'FiveM', 'Leaflet', 'Node.js', 'React'];
+export const marquee = ['Lua', 'PHP', 'JavaScript', 'MySQL', 'Discord', 'FiveM', 'Leaflet', 'Node.js', 'React'];
 
 export const categories = [
   { id: 'all', label: 'Tous' },
+  { id: 'server', label: 'Serveurs' },
   { id: 'site', label: 'Sites' },
   { id: 'app', label: 'Applications' },
   { id: 'bot', label: 'Bots' }
@@ -59,7 +60,33 @@ export const categories = [
 
 // `repo` : nom du dépôt GitHub associé (facultatif) — le lien « Voir le code »
 // n'apparaît que si le dépôt existe et n'est pas vide.
+// `modules` : liste affichée à la place d'une capture (facultatif).
 export const projects = [
+  {
+    id: 'nivokai-base',
+    category: 'server',
+    kind: 'Serveur roleplay · en cours',
+    title: 'Nivokai · Base FiveM',
+    description:
+      "Base roleplay FiveM écrite entièrement à la main, sans ESX, QBCore ni ox_* : 44 ressources qui couvrent tout le serveur, des personnages à l'économie, des métiers au téléphone. Presque tout se règle en jeu, depuis les panneaux du staff.",
+    highlights: [
+      'Framework maison : base de données et migrations, permissions par rang, journal d’audit',
+      'Inventaire, banque et factures, véhicules, propriétés, téléphone, santé et justice',
+      'Métiers : police, secours, pompiers, restaurants, presse, administration fiscale',
+      'Créateurs en jeu : braquages, drogues, émotes, tatouages, décor',
+      'Interface « Nivokai Noir » : un design system commun à tous les écrans'
+    ],
+    tags: ['Lua 5.4', 'JavaScript', 'HTML / CSS', 'MySQL', 'FiveM', 'Discord'],
+    modules: [
+      'core', 'db', 'ui', 'admin', 'appearance', 'clothing', 'inventory', 'bank', 'fisc', 'shops',
+      'jobs', 'groups', 'vehicles', 'properties', 'phone', 'radio', 'dispatch', 'mdt', 'mdt_ems',
+      'health', 'justice', 'court', 'press', 'restaurants', 'harvest', 'drugs', 'heists', 'tattoos',
+      'emotes', 'pets', 'quests', 'world', 'doors', 'markers', 'decor', 'fire', 'rules', 'context',
+      'chat', 'voice', 'hud', 'pause', 'loading', 'images'
+    ],
+    size: 'wide',
+    featured: true
+  },
   {
     id: 'blaine-county',
     category: 'site',
@@ -174,6 +201,8 @@ export const projects = [
 ];
 
 export const stack = [
+  'Lua',
+  'FiveM',
   'PHP',
   'JavaScript',
   'MySQL',
@@ -191,6 +220,7 @@ export const stack = [
 
 export const stats = [
   { key: 'projects', to: projects.length, label: 'projets réalisés' },
+  { key: 'resources', to: 44, label: 'ressources dans la base FiveM Nivokai' },
   { key: 'vehicles', to: 446, label: 'véhicules dans le catalogue Motors' },
   { key: 'audit', to: 14, label: 'failles corrigées après audit OWASP', suffix: '/14' }
 ];
