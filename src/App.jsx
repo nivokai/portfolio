@@ -134,7 +134,14 @@ function ProjectCard({ project, index, repos }) {
             {project.featured && <span className="project-flag">Projet phare</span>}
           </div>
           <h3>{project.title}</h3>
+          {project.status && (
+            <p className="project-status">
+              <span aria-hidden="true" />
+              {project.status}
+            </p>
+          )}
           <p className="project-desc">{project.description}</p>
+          {project.statusNote && <p className="project-status-note">{project.statusNote}</p>}
           {project.highlights && (
             <ul className="project-points">
               {project.highlights.map(h => (

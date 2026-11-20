@@ -65,10 +65,13 @@ export const projects = [
   {
     id: 'nivokai-base',
     category: 'server',
-    kind: 'Serveur roleplay · en cours',
+    kind: 'Serveur roleplay',
+    status: 'En développement · pas encore terminé',
     title: 'Nivokai · Base FiveM',
     description:
       "Base roleplay FiveM écrite entièrement à la main, sans ESX, QBCore ni ox_* : 44 ressources qui couvrent tout le serveur, des personnages à l'économie, des métiers au téléphone. Presque tout se règle en jeu, depuis les panneaux du staff.",
+    statusNote:
+      "Le projet n'est pas encore terminé : il avance phase par phase, plusieurs parties restent à tester en jeu et d'autres sont encore à construire (tablettes des organisations, caméras, anticheat, finitions). Le serveur n'est pas encore ouvert au public.",
     highlights: [
       'Framework maison : base de données et migrations, permissions par rang, journal d’audit',
       'Inventaire, banque et factures, véhicules, propriétés, téléphone, santé et justice',
@@ -161,10 +164,7 @@ export const projects = [
     description:
       'Panel web relié à un bot Discord : tickets et catégories, envoi et édition de messages, reaction roles, permissions par rôle, notifications, journaux et pages publiques (règlement, catalogue).',
     tags: ['PHP', 'MySQL', 'JavaScript', 'API Discord'],
-    image: 'shots/panel-pages.webp',
-    imageNote: 'Une des pages publiques servies par le panel',
-    size: 'wide',
-    flip: true
+    size: 'wide'
   },
   {
     id: 'staff',
